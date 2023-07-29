@@ -1,7 +1,15 @@
 import { styled } from "styled-components";
 
-export const ItemContainer = styled.div`
-  position: fixed;
+export const ListContainer = styled.ul`
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+`;
+
+export const ItemContainer = styled.li`
+  position: relative;
   height: 460px;
   width: 380px;
   border-radius: 20px;
@@ -31,9 +39,10 @@ export const BgImg = styled.img`
   margin: 28px auto 0;
 `;
 
-export const Line = styled.img`
+export const Line = styled.span`
   position: absolute;
   top: 214px;
+  left: 0;
   width: 380px;
   height: 8px;
   background: linear-gradient(
@@ -46,8 +55,10 @@ export const Line = styled.img`
 
 export const UserImg = styled.img`
   position: absolute;
-  top: 178px;
+  top: 170px;
   left: 150px;
+  border-radius: 50%;
+  border: 8px solid #ebd8ff;
 `;
 
 export const TweetTxt = styled.p`
