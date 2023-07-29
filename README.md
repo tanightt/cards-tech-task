@@ -18,3 +18,4 @@ This repository contain the following packages:
 - [@reduxjs/toolkit](https://www.npmjs.com/package/@reduxjs/toolkit)
 - [redux-persist](https://www.npmjs.com/package/redux-persist)
 - [styled-components](https://www.npmjs.com/package/styled-components)
+- [prop-types](https://www.npmjs.com/package/prop-types)

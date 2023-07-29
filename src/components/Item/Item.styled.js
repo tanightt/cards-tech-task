@@ -1,13 +1,5 @@
 import { styled } from "styled-components";
 
-export const ListContainer = styled.ul`
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-`;
-
 export const ItemContainer = styled.li`
   position: relative;
   height: 460px;
@@ -68,13 +60,4 @@ export const TweetTxt = styled.p`
 
 export const FollowBtn = styled.button`
   margin-top: 26px;
-  border-radius: 10px;
-  padding: 14px 56px;
-  font-family: Montserrat, sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-  background-color: #ebd8ff;
-  color: #373737;
-  cursor: pointer;
 `;

@@ -31,9 +31,16 @@ ol {
   list-style: none;
 }
 button {
+  border-radius: 10px;
+  padding: 14px 56px;
   border: none;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #ebd8ff;
+  color: #373737;
 }
 img,
 picture {
