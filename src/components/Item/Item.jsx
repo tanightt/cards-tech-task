@@ -10,8 +10,23 @@ import {
 } from "./Item.styled";
 import icon from "../../images/sprite.svg";
 import chat from "../../images/chat.png";
+import { useState } from "react";
 
 export const Item = ({ avatar, followers, tweets, handleFollow }) => {
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [followerCount, setFollowerCount] = useState(followers);
+
+  const handleFollowClick = () => {
+    if (isFollowing) {
+      setFollowerCount((prevCount) => prevCount - 1);
+    } else {
+      setFollowerCount((prevCount) => prevCount + 1);
+    }
+
+    setIsFollowing((prevFollowing) => !prevFollowing);
+    handleFollow(isFollowing);
+  };
+
   return (
     <ItemContainer>
       <LogoSvg width="76px" height="22px">
@@ -22,8 +37,13 @@ export const Item = ({ avatar, followers, tweets, handleFollow }) => {
         <Line></Line>
         <UserImg width="80px" height="80px" src={avatar} alt="user" />
         <TweetTxt>{tweets} tweets</TweetTxt>
-        <p>{followers} Followers</p>
-        <FollowBtn onClick={handleFollow}>Follow</FollowBtn>
+        <p>{followerCount} Followers</p>
+        <FollowBtn
+          onClick={handleFollowClick}
+          style={{ backgroundColor: isFollowing ? "#5CD3A8" : "#EBD8FF" }}
+        >
+          {isFollowing ? "Following" : "Follow"}
+        </FollowBtn>
       </div>
     </ItemContainer>
   );

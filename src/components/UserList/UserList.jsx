@@ -10,18 +10,19 @@ export const UserList = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchUsers(1));
+    dispatch(fetchUsers());
   }, [dispatch]);
 
   const users = useSelector(selectUsers);
 
-  const handleFollow = (id) => {
+  const handleFollow = (id, isFollowing) => {
     const userToUpdate = users.find((user) => user.id === id);
 
     if (userToUpdate) {
-      const updatedFollowers = userToUpdate.followers + 1;
+      const updatedFollowers = isFollowing
+        ? userToUpdate.followers
+        : userToUpdate.followers + 1;
       const updatedUser = { ...userToUpdate, followers: updatedFollowers };
-      console.log(updatedUser);
       dispatch(editUser(updatedUser));
     }
   };
@@ -41,7 +42,7 @@ export const UserList = () => {
             avatar={avatar}
             followers={followers}
             tweets={tweets}
-            handleFollow={() => handleFollow(id)}
+            handleFollow={(isFollowing) => handleFollow(id, isFollowing)}
           />
         ))}
       </ListContainer>

@@ -59,5 +59,6 @@ export const TweetTxt = styled.p`
 `;
 
 export const FollowBtn = styled.button`
+  width: 196px;
   margin-top: 26px;
 `;
