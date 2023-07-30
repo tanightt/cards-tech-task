@@ -6,39 +6,38 @@ import { selectUsers } from "../../redux/selectors";
 import { Item } from "../Item/Item";
 
 export const UserList = () => {
-  const [next, setNext] = useState(3);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
+  const [limit, setLimit] = useState(3);
 
   const users = useSelector(selectUsers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUsers({ limit }));
+  }, [dispatch, limit]);
 
   const handleFollow = (id, isFollowing) => {
     const userToUpdate = users.find((user) => user.id === id);
 
     if (userToUpdate) {
       const updatedFollowers = isFollowing
-        ? userToUpdate.followers
+        ? userToUpdate.followers - 1
         : userToUpdate.followers + 1;
       const updatedUser = { ...userToUpdate, followers: updatedFollowers };
-      dispatch(editUser(updatedUser));
+      dispatch(editUser(updatedUser, isFollowing));
     }
   };
 
-  const sliceList = users.slice(0, next);
-
   const handleLoadMore = () => {
-    setNext(next + 3);
+    setLimit((prev) => prev + 3);
   };
 
   return (
     <>
       <ListContainer>
-        {sliceList.map(({ avatar, followers, tweets, id }) => (
+        {users.map(({ avatar, followers, tweets, id }) => (
           <Item
             key={id}
+            id={id}
             avatar={avatar}
             followers={followers}
             tweets={tweets}
@@ -46,10 +45,7 @@ export const UserList = () => {
           />
         ))}
       </ListContainer>
-
-      {next !== users.length && (
-        <LoadMore onClick={handleLoadMore}>Load More</LoadMore>
-      )}
+      {limit !== 12 && <LoadMore onClick={handleLoadMore}>Load More</LoadMore>}
     </>
   );
 };

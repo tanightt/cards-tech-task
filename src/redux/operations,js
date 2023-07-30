@@ -5,9 +5,14 @@ axios.defaults.baseURL = "https://64ac593a9edb4181202f765e.mockapi.io";
 
 export const fetchUsers = createAsyncThunk(
   "user/fetch",
-  async (_, thunkAPI) => {
+  async ({ limit }, thunkAPI) => {
     try {
-      const { data } = await axios.get("/users");
+      const { data } = await axios.get("/users", {
+        params: {
+          page: 1,
+          limit: limit,
+        },
+      });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
