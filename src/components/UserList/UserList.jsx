@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { ListContainer, LoadMore } from "./UserList.styled";
-import { fetchUsers, editUser } from "../../redux/operations,js";
+import { fetchUsers, editUser } from "../../redux/operations.js";
 import { selectUsers } from "../../redux/selectors";
 import { Item } from "../Item/Item";
 

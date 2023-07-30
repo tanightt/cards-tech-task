@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUsers } from "./operations,js";
-import { editUser } from "./operations,js";
+import { fetchUsers } from "./operations.js";
+import { editUser } from "./operations.js";
 
 const initialState = {
   items: [],

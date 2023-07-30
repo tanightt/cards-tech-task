@@ -2,11 +2,12 @@ import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const LayoutList = styled.header`
-  height: 40px;
   padding-left: 20px;
   padding-right: 20px;
   border-bottom: 2px solid #737cb2;
+  background-color: #b0a6e9;
   ul {
+    padding: 10px 0;
     display: flex;
     gap: 30px;
   }

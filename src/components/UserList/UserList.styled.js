@@ -11,4 +11,5 @@ export const ListContainer = styled.ul`
 export const LoadMore = styled.button`
   display: block;
   margin: 30px auto;
+  border: 3px solid #3c2d6f;
 `;

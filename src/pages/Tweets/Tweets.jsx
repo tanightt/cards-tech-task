@@ -7,7 +7,7 @@ export const Tweets = () => {
     <>
       <h1>Tweets</h1>
       <Link to="/">
-        <svg width="40px" height="40px">
+        <svg width="40px" height="40px" style={{ marginLeft: "20px" }}>
           <use href={icon + "#back"}></use>
         </svg>
       </Link>

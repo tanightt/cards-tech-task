@@ -7,12 +7,29 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  min-height: 100vh;
+  background: linear-gradient(
+    55deg,
+    rgba(251, 248, 255, 1) 31%,
+    rgba(145, 106, 186, 1) 100%
+  );
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body {
+  margin: 0;
 }
 
 a {
   font-weight: 600;
   color: #646cff;
   text-decoration: none;
+}
+
+h1 {
+  margin-left: 20px;
 }
 
 p,
