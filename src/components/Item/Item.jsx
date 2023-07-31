@@ -12,23 +12,25 @@ import icon from "../../images/sprite.svg";
 import chat from "../../images/chat.png";
 import { useState } from "react";
 
-export const Item = ({ id, avatar, followers, tweets, handleFollow }) => {
-  const [isFollowing, setIsFollowing] = useState(
-    localStorage.getItem(`isFollowing_${id}`) === "true"
-  );
+export const Item = ({
+  avatar,
+  followers,
+  tweets,
+  isFollowing,
+  handleFollow,
+}) => {
   const [followerCount, setFollowerCount] = useState(followers);
+  const [localIsFollowing, setLocalIsFollowing] = useState(isFollowing);
 
   const handleFollowClick = () => {
-    if (isFollowing) {
+    setLocalIsFollowing((prevIsFollowing) => !prevIsFollowing);
+    if (localIsFollowing) {
       setFollowerCount((prevCount) => prevCount - 1);
     } else {
       setFollowerCount((prevCount) => prevCount + 1);
     }
 
-    const updatedFollowingStatus = !isFollowing;
-    setIsFollowing(updatedFollowingStatus);
-    localStorage.setItem(`isFollowing_${id}`, updatedFollowingStatus);
-    handleFollow(isFollowing);
+    handleFollow(localIsFollowing);
   };
 
   return (
@@ -44,9 +46,9 @@ export const Item = ({ id, avatar, followers, tweets, handleFollow }) => {
         <p>{followerCount.toLocaleString("en-US")} Followers</p>
         <FollowBtn
           onClick={handleFollowClick}
-          style={{ backgroundColor: isFollowing ? "#5CD3A8" : "#EBD8FF" }}
+          style={{ backgroundColor: localIsFollowing ? "#5CD3A8" : "#EBD8FF" }}
         >
-          {isFollowing ? "Following" : "Follow"}
+          {localIsFollowing ? "Following" : "Follow"}
         </FollowBtn>
       </div>
     </ItemContainer>
@@ -54,9 +56,9 @@ export const Item = ({ id, avatar, followers, tweets, handleFollow }) => {
 };
 
 Item.propTypes = {
-  id: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   followers: PropTypes.number.isRequired,
   tweets: PropTypes.number.isRequired,
+  isFollowing: PropTypes.bool.isRequired,
   handleFollow: PropTypes.func.isRequired,
 };

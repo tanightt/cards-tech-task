@@ -6,7 +6,6 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
-  isFollowing: false,
 };
 
 const slice = createSlice({
@@ -22,7 +21,8 @@ const slice = createSlice({
       })
       .addCase(editUser.fulfilled, (state, { payload }) => {
         state.items = state.items.filter((user) => user.id !== payload);
-        state.isFollowing = !state.isFollowing;
+        state.loading = false;
+        state.error = null;
       })
       .addMatcher(
         (action) => action.type.endsWith("/pending"),
