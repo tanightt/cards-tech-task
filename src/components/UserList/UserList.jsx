@@ -45,7 +45,9 @@ export const UserList = () => {
           />
         ))}
       </ListContainer>
-      {limit !== 12 && <LoadMore onClick={handleLoadMore}>Load More</LoadMore>}
+      {users.length !== 0 && limit !== 12 && (
+        <LoadMore onClick={handleLoadMore}>Load More</LoadMore>
+      )}
     </>
   );
 };

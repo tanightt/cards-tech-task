@@ -51,6 +51,7 @@ export const UserImg = styled.img`
   left: 150px;
   border-radius: 50%;
   border: 8px solid #ebd8ff;
+  background-color: #ebd8ff;
 `;
 
 export const TweetTxt = styled.p`

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { UserList } from "../../components/UserList/UserList";
 import icon from "../../images/sprite.svg";
 
-export const Tweets = () => {
+const Tweets = () => {
   return (
     <>
       <h1>Tweets</h1>
@@ -15,3 +15,5 @@ export const Tweets = () => {
     </>
   );
 };
+
+export default Tweets;
